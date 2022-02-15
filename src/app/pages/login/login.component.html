@@ -1,0 +1,16 @@
+<div class="form">
+  <img src="../../../assets/logo.png" alt="" />
+  <div class="floating-form">
+    <div class="floating-label">
+      <input class="floating-input" type="text" placeholder=" " [(ngModel)]="user" />
+      <span class="highlight"></span>
+      <label>Nombre de Usuario</label>
+    </div>
+    <div class="floating-label">
+      <input class="floating-input" type="password" placeholder=" " [(ngModel)]="password" />
+      <span class="highlight"></span>
+      <label>Contraseña</label>
+    </div>
+  </div>
+  <button class="btnLogin" (click)="login()">Iniciar sesión</button>
+</div>

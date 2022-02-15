@@ -1,0 +1,12 @@
+<div class="navbar">
+  <div class="logo">
+    <img src="../../../assets/logo.png" alt="" />
+  </div>
+  <div *ngFor="let route of routes" class="navegation" [routerLink]="route.navegation">
+    <div>
+      <img src="{{ route.iconPath }}" alt="" />
+      <p>{{ route.name }}</p>
+    </div>
+  </div>
+</div>
+<div class="header"></div>
