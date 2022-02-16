@@ -44,6 +44,22 @@
       <span class="highlight"></span>
       <label>Precio</label>
     </div>
+
+
+    <div class="center">
+      <ngx-file-drop [multiple]="true" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
+      (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+          <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+            Arrastre las imagenes aqui (Maximo 4 imagenes)
+            <button type="button" (click)="openFileSelector()">Browse Files</button>
+          </ng-template>
+      </ngx-file-drop>
+      <div class="upload-table" id="upload-preview">
+      
+      </div>
+  </div>
+
+
     <button (click)="registrar()" class="btnAgregar">Agregar Producto</button>
   </div>
 </div>
