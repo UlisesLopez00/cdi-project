@@ -13,8 +13,10 @@
 }
 .alerta p {
   position: relative;
-  width: 100%;
+  width: 90%;
+  text-align: center;
   color: white;
+
 }
 .alerta button {
   position: absolute;

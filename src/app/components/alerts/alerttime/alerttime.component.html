@@ -1,4 +1,4 @@
-<div [style]="'background-color:'+data.color+';'" *ngIf="data.show" class="alerta">
+<div [style]="'background-color:'+data.color+';'+'transform: rotate('+animation+'deg);'" *ngIf="data.show" class="alerta">
     <button (click)="data.show = false">x</button>
     <p >{{data.msg}}</p>
 </div>
