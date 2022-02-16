@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EnviromentService } from 'src/app/services/enviroment.service';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-login',
@@ -10,21 +11,44 @@ import { EnviromentService } from 'src/app/services/enviroment.service';
 export class LoginComponent implements OnInit {
   public user: String = '';
   public password: String = '';
-  public alerta: any = {};
-  constructor(private router: Router, private envService: EnviromentService) {
+  public alerta:any = {};
+  constructor(
+    private router: Router,
+    private envService: EnviromentService,
+    private userService: UsersService
+  ) {
+
     this.envService.navbar = false;
   }
 
   ngOnInit(): void {}
   login() {
     let data = {
-      user: this.user,
-      password: this.password,
+      email: this.user,
+      pwd: this.password,
     };
-    this.alerta = {
-      show: true,
-      msg: 'Usuario y/o contraseña incorrectos',
-      color: 'red',
-    };
+
+    this.userService.login(data).subscribe({
+      next: (data:any)=>{
+        this.alerta = {
+          show:true,
+          msg:'Bienvenido',
+          color:'green'
+        }
+        localStorage.setItem('token',data.token);
+        this.envService.navbar = true;
+        this.router.navigate(['home']);
+        
+      },
+      error: (err: any)=>{
+        this.alerta = {
+          show:true,
+          msg:'Usuario y/o contraseña incorrecta',
+          color:'red'
+        }
+        console.log(err)
+      } 
+    });
+
   }
 }
