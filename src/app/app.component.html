@@ -1,7 +1,8 @@
 <app-navbar *ngIf="envService.navbar"></app-navbar>
+<app-alerttime></app-alerttime>
 <div class="body" *ngIf="envService.navbar">
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>
-<div *ngIf="!envService.navbar" >
-    <router-outlet></router-outlet>
+<div *ngIf="!envService.navbar">
+  <router-outlet></router-outlet>
 </div>

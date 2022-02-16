@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, Input } from '@angular/core';
 
 @Component({
   selector: 'app-alerttime',
   templateUrl: './alerttime.component.html',
-  styleUrls: ['./alerttime.component.css']
+  styleUrls: ['./alerttime.component.css'],
 })
-export class AlerttimeComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+@Injectable({
+  providedIn: 'root',
+})
+export class AlerttimeComponent {
+  @Input() data: any = {};
+  constructor() {}
 }

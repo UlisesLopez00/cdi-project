@@ -1,1 +1,4 @@
-<p>alerttime works!</p>
+<div [style]="'background-color:'+data.color+';'" *ngIf="data.show" class="alerta">
+    <button (click)="data.show = false">x</button>
+    <p >{{data.msg}}</p>
+</div>
