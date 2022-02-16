@@ -1,1 +1,49 @@
-<p>products works!</p>
+<app-alerttime [data]="alerta"></app-alerttime>
+<div class="form">
+  <h3>Agregar un nuevo producto</h3>
+  <div class="floating-form">
+    <div class="floating-label">
+      <input
+        class="floating-input"
+        type="text"
+        placeholder=" "
+        [(ngModel)]="cdb"
+        (keyup.enter)="focus('description')"
+      />
+      <span class="highlight"></span>
+      <label>Codigo de barras</label>
+    </div>
+    <div class="floating-label">
+      <input
+        class="floating-input"
+        type="text"
+        placeholder=" "
+        id="description"
+        [(ngModel)]="descripcion"
+      />
+      <span class="highlight"></span>
+      <label>Descripcion</label>
+    </div>
+    <div class="floating-label split" style="margin-right: 4%">
+      <input
+        class="floating-input"
+        type="text"
+        placeholder=" "
+        [(ngModel)]="cantidad"
+      />
+      <span class="highlight"></span>
+      <label>Cantidad</label>
+    </div>
+    <div class="floating-label split">
+      <input
+        class="floating-input"
+        type="text"
+        placeholder=" "
+        [(ngModel)]="precio"
+      />
+      <span class="highlight"></span>
+      <label>Precio</label>
+    </div>
+    <button (click)="registrar()" class="btnAgregar">Agregar Producto</button>
+  </div>
+</div>
