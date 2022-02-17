@@ -11,8 +11,9 @@ import { AlertconfirmationComponent } from './components/alerts/alertconfirmatio
 import { HomeComponent } from './pages/home/home.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http'
-
+import {HttpClientModule} from '@angular/common/http';
+import { DndDirective } from './directives/dnd.directive'
+import { NgxFileDropModule } from 'ngx-file-drop';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +23,15 @@ import {HttpClientModule} from '@angular/common/http'
     AlerttimeComponent,
     AlertconfirmationComponent,
     HomeComponent,
-    ProductsComponent
+    ProductsComponent,
+    DndDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxFileDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
