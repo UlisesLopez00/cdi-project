@@ -20,8 +20,8 @@ export class NavbarComponent implements OnInit {
     },
     {
       name:'Usuarios',
-      iconPath:'../../../assets/icons/products.svg',
-      navegation:'productos'
+      iconPath:'../../../assets/icons/users-icon.svg',
+      navegation:'users'
     },
     {
       name:'Productos',

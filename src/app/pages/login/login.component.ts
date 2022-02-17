@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
     private envService: EnviromentService,
     private userService: UsersService
   ) {
+
     this.envService.navbar = false;
   }
 
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
       email: this.user,
       pwd: this.password,
     };
+
     this.userService.login(data).subscribe({
       next: (data:any)=>{
         this.alerta = {
@@ -47,5 +49,6 @@ export class LoginComponent implements OnInit {
         console.log(err)
       } 
     });
+
   }
 }
