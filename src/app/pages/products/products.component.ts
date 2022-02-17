@@ -17,6 +17,7 @@ export class ProductsComponent implements OnInit {
   public precio?: number;
   public cantidad?: number;
   public files: NgxFileDropEntry[] = [];
+  public imagenes:any = [];
 
   ngOnInit(): void {}
 
@@ -44,22 +45,42 @@ export class ProductsComponent implements OnInit {
 
   public dropped(files: NgxFileDropEntry[]) {
     this.files = files;
+
     for (const droppedFile of files) {
       // Is it a file?
-      if (droppedFile.fileEntry.isFile) {
+      let extension = droppedFile.fileEntry.name.substring(droppedFile.fileEntry.name.lastIndexOf('.') + 1);
+      console.log(extension);
+      
+      if (droppedFile.fileEntry.isFile && (extension == 'png' || extension == 'jpeg' || extension == 'jpg')) {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
         fileEntry.file(async (file: File) => {
-          let img = document.createElement('img');
-          let base64: any = await this.toBase64(file);
-          img.setAttribute('src', base64.toString());
-          img.setAttribute('style', 'width:25%;height:200px');
-          let divPreview = document.getElementById('upload-preview');
-          divPreview?.appendChild(img);
+          
+          if (this.imagenes.length < 4) {
+            let img = document.createElement('img');
+            let base64: any = await this.toBase64(file);
+            img.setAttribute('src', base64.toString());
+            img.setAttribute('style', 'width:25%;height:200px');
+            img.setAttribute('id', 'imagePreview');
+            let divPreview = document.getElementById('upload-preview');
+            divPreview?.appendChild(img);
+            this.imagenes.push(base64)
+            
+          }else{
+            this.alerta ={
+              show:true,
+              msg:"Solo se pueden subir maximo 4 imagenes",
+              color:'orange'
+            }
+          }
+       
         });
       } else {
-        // It was a directory (empty directories are added, otherwise only files)
-        const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
-        console.log(droppedFile.relativePath, fileEntry);
+
+        this.alerta ={
+          show:true,
+          msg:"Solo se pueden subir imagenes png,jpg,jpeg",
+          color:'orange'
+        }
       }
     }
   }
