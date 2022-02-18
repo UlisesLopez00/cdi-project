@@ -71,6 +71,22 @@
   text-align: left;
 }
 
+.btnCerrarSesion {
+  position: relative;
+  float: right;
+  width: 10%;
+  height: 100%;
+  background: none;
+  font-size: 20px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.btnCerrarSesion:hover{
+  color: rgb(24, 161, 240);
+  text-decoration: underline;
+}
+
 @media only screen and (max-width: 600px) {
   .navbarWeb {
     display: none;

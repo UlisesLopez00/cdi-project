@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { EnviromentService } from 'src/app/services/enviroment.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -6,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  constructor() {}
+  constructor( private router: Router,
+    private envService: EnviromentService, ) {}
+
+    ngOnInit():void {
+      if (!localStorage.getItem('token')) {
+        this.router.navigate(['login']);
+      }
+    }
+    
   public showMenuMovil:boolean = false;
   public routes = [
     {
@@ -30,5 +41,10 @@ export class NavbarComponent implements OnInit {
       navegation:'productos'
     },
   ];
-  ngOnInit(): void {}
+
+  closeSesion(){
+    this.router.navigate(['login']);
+    this.envService.navbar = false;
+    localStorage.removeItem('token');
+  }
 }
