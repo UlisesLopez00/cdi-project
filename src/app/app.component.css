@@ -5,3 +5,13 @@
     left: 20%;
     overflow-y: auto;
 }
+@media only screen and (max-width: 600px) {
+    .body{
+        position: relative;
+        width: 100%;
+        top: 70px;
+        overflow-y: auto;
+        left: 0px;
+    }
+
+}

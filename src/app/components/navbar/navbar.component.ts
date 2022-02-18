@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   constructor() {}
+  public showMenuMovil:boolean = false;
   public routes = [
     {
       name:'Dashboard',

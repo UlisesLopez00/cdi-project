@@ -1,4 +1,4 @@
-.navbar {
+.navbarWeb {
   position: fixed;
   width: 20%;
   height: 100%;
@@ -6,7 +6,15 @@
   top: 0px;
   left: 0%;
 }
-.header {
+.navbarMovil {
+  position: fixed;
+  display: none;
+}
+.headerMovil {
+  position: fixed;
+  display: none;
+}
+.headerWeb {
   position: fixed;
   width: 80%;
   height: 70px;
@@ -37,11 +45,9 @@
   cursor: pointer;
 }
 .navegation:hover {
-    border-bottom: 1px solid rgb(24, 161, 240);
-    color:rgb(24, 161, 240) ;
-
-   
-  }
+  border-bottom: 1px solid rgb(24, 161, 240);
+  color: rgb(24, 161, 240);
+}
 .navegation div {
   position: relative;
   width: 100%;
@@ -54,7 +60,6 @@
   position: relative;
   width: 25%;
   height: 100%;
-
 }
 .navegation div p {
   position: relative;
@@ -64,5 +69,45 @@
   font-size: 20px;
   transform: translateY(-50%);
   text-align: left;
+}
 
+@media only screen and (max-width: 600px) {
+  .navbarWeb {
+    display: none;
+  }
+  .headerWeb {
+    position: fixed;
+    display: none;
+  }
+  .navbarMovil {
+    position: fixed;
+    display: block;
+    top: 70px;
+    width: 90%;
+    z-index: 9;
+    background-color: black;
+    height: 100%;
+
+  }
+  .headerMovil {
+    position: fixed;
+    display: block;
+    width: 100%;
+    background-color: black;
+    height: 70px;
+    z-index: 9;
+  }
+  .menuIcon{
+    position: relative;
+    height: 100%;
+    margin-left: 10px;
+    
+  }
+  .menuIcon img{
+    position: relative;
+    height: 60%;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
 }
