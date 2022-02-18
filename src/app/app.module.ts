@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { DndDirective } from './directives/dnd.directive'
 import { NgxFileDropModule } from 'ngx-file-drop';
+
 @NgModule({
   declarations: [
     AppComponent,
