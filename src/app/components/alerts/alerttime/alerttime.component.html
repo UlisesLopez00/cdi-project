@@ -1,4 +1,5 @@
 <div [style]="'background-color:'+data.color+';'+'transform: rotate('+animation+'deg);'" *ngIf="data.show" class="alerta">
+    <img class="icon" [src]="'../../../../assets/icons/'+data.icon+'.svg'" alt="">
     <button (click)="data.show = false">x</button>
     <p >{{data.msg}}</p>
 </div>
