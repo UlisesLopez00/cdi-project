@@ -14,7 +14,9 @@ import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { DndDirective } from './directives/dnd.directive'
 import { NgxFileDropModule } from 'ngx-file-drop';
+
 import { NgChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
