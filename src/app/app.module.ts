@@ -16,6 +16,7 @@ import { DndDirective } from './directives/dnd.directive'
 import { NgxFileDropModule } from 'ngx-file-drop';
 
 import { NgChartsModule } from 'ng2-charts';
+import { UsersComponent } from './pages/users/users.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NgChartsModule } from 'ng2-charts';
     AlertconfirmationComponent,
     HomeComponent,
     ProductsComponent,
+    UsersComponent,
     DndDirective
   ],
   imports: [

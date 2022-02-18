@@ -27,7 +27,7 @@ public users:any = [];
       error:(err:any)=>{
         this.alerta = {
           show:true,
-          msg:'Error',
+          msg:'Error al conectar con el servidor. Intentelo mas tarde',
           color:'red'
         }
         console.log(err)

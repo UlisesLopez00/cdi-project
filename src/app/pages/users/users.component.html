@@ -1,3 +1,52 @@
-<p>
-  users works!
-</p>
+<app-alerttime [data]="alerta"></app-alerttime>
+<div *ngIf="true" class="form">
+  <h3>Agregar un nuevo Usuario</h3>
+  <div class="floating-form">
+    <div class="floating-label">
+      <input class="floating-input" type="text" placeholder=" " />
+      <span class="highlight"></span>
+      <label>Nombre Completo</label>
+    </div>
+    <div class="floating-label">
+      <input
+        class="floating-input"
+        type="text"
+        placeholder=" "
+        id="description"
+      />
+      <span class="highlight"></span>
+      <label>Correo Electronico</label>
+    </div>
+    <div class="floating-label split" style="margin-right: 4%">
+      <input class="floating-input" type="text" placeholder=" " />
+      <span class="highlight"></span>
+      <label>Contraseña</label>
+    </div>
+    <div class="floating-label split">
+      <input class="floating-input" type="text" placeholder=" " />
+      <span class="highlight"></span>
+      <label>Confirmar Contraseña</label>
+    </div>
+
+    <button class="btnAgregar">Agregar Cliente</button>
+  </div>
+</div>
+
+<div class="divTable">
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre Completo</th>
+        <th>Email</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Omar Quezada</td>
+        <td>omar@mail.com</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
