@@ -1,6 +1,8 @@
 <app-alerttime [data]="alerta"></app-alerttime>
 <div *ngIf="true" class="form">
-  <h3>Agregar un nuevo Usuario</h3>
+  <h3 *ngIf="!editar">Agregar un nuevo Usuario</h3>
+  <h3 *ngIf="editar">Editar Usuario</h3>
+
   <div class="floating-form">
     <div class="floating-label">
       <input class="floating-input" type="text" placeholder=" " [(ngModel)]="name" />
@@ -18,18 +20,20 @@
       <span class="highlight"></span>
       <label>Correo Electronico</label>
     </div>
-    <div class="floating-label split" style="margin-right: 4%">
+    <div *ngIf="!editar" class="floating-label split" style="margin-right: 4%">
       <input class="floating-input" type="password" placeholder=" " [(ngModel)]="pwd" />
       <span class="highlight"></span>
       <label>Contraseña</label>
     </div>
-    <div class="floating-label split">
+    <div *ngIf="!editar" class="floating-label split">
       <input class="floating-input" type="password" placeholder=" " [(ngModel)]="confirmPwd" />
       <span class="highlight"></span>
       <label>Confirmar Contraseña</label>
     </div>
 
-    <button class="btnAgregar" (click)="registerUser()">Agregar Cliente</button>
+    <button class="btnAgregar" *ngIf="!editar" (click)="registerUser()">Agregar Cliente</button>
+    <button class="btnAgregar" *ngIf="editar" (click)="actualizarUser()">Guardar Cambios</button>
+
   </div>
 </div>
 
@@ -46,10 +50,12 @@
       <tr *ngFor="let user of users">
         <td>{{user.user}}</td>
         <td>{{user.email}}</td>
-        <td><button class="btnTable eliminar" (click)="deleteUser(user._id)">Eliminar</button>
-          <button class="btnTable actualizar" >Actualizar</button>
+        <td><button class="btnTable eliminar" (click)="deleteUser(user._id)"><img src="../../../assets/icons/delete.svg" alt=""></button>
+          <button (click)="clicActualizar(user)" class="btnTable actualizar" ><img src="../../../assets/icons/edit.svg" alt=""></button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+

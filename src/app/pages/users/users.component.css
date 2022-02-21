@@ -8,12 +8,17 @@
 
 .btnTable {
   position: relative;
-  width: 50%;
+  width: 40%;
+  margin: 5%;
   height: 100%;
   border-radius: 10px;
   border: none;
   color: white;
   cursor: pointer;
+}
+.btnTable img{
+  position: relative;
+  height: 40px;
 }
 
 .btnTable.eliminar{
@@ -25,14 +30,15 @@
 
 .divTable{
   position: relative;
-  width: 100%;
+  width: 90%;
+  left: 50%;
+  transform: translate(-50%);
   height: auto;
 }
 .divTable table{
   position: relative;
   width: 100%;
   text-align: center;
-  border-top: 1px solid orangered;
   margin-top: 20px;
 }
 
