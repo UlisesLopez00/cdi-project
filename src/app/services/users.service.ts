@@ -18,9 +18,9 @@ export class UsersService {
     return this.http.get(`${this.url}/users`);
   }
   public userPut(data: any,id:any){
-    return this.http.get(`${this.url}/users/${id}`,data);
+    return this.http.put(`${this.url}/users/${id}`,data);
   }
-  public userDelete(data:any,id:any){
-    return this.http.get(`${this.url}/users/${id}`,data);
+  public userDelete(id:any){
+    return this.http.delete(`${this.url}/users/${id}`);
   }
 }

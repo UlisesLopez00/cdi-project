@@ -10,6 +10,7 @@ export class UsersComponent implements OnInit {
 public name: string = '';
 public email: string='';
 public pwd: string='';
+public confirmPwd: string = '';
 public alerta:any = {};
 public users:any = [];
 
@@ -22,7 +23,7 @@ public users:any = [];
   showUsers(){
     this.userService.userGet().subscribe({
       next: (data:any)=>{
-        console.log(data);
+        this.users = data.data
       },
       error:(err:any)=>{
         this.alerta = {
@@ -42,22 +43,56 @@ public users:any = [];
       email: this.email,
       pwd: this.pwd
     };
-    this.userService.userPost(data).subscribe({
-      next: (data:any)=>{
+   
+    if (this.confirmPwd===this.pwd) {
+      this.userService.userPost(data).subscribe({
+        next: (data:any)=>{
+          this.alerta = {
+            show:true,
+            msg:'Usuario Registrado con éxito',
+            color:'green'
+          }
+          this.showUsers();
+        },
+        error: (err: any)=>{
+          this.alerta = {
+            show:true,
+            msg:'Error',
+            color:'red'
+          }
+          console.log(err)
+        } 
+      })
+    } else {
+      this.alerta = {
+        show:true,
+        msg:'Las contraseñas no coinciden',
+        color:'red',
+        icon:'warning'
+      }
+      console.log('contraseña !=');
+    }
+  }
+
+  deleteUser(id:any){
+    if(confirm("Seguro de eliminar?"))
+    this.userService.userDelete(id).subscribe({
+      next:(data:any)=>{
         this.alerta = {
           show:true,
-          msg:'Usuario Registrado con éxito',
+          msg:'Usuario eliminado con éxito',
           color:'green'
         }
+        this.showUsers();
       },
-      error: (err: any)=>{
+      error: (err:any)=>{
         this.alerta = {
           show:true,
-          msg:'Error',
-          color:'red'
+          msg:'Error al eliminar',
+          color:'green'
         }
-        console.log(err)
-      } 
+        console.log(err);
+      }
     })
   }
 

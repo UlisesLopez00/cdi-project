@@ -6,6 +6,23 @@
     padding: 20px;
   }
 
+.btnTable {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.btnTable.eliminar{
+  background-color: red;
+}
+.btnTable.actualizar{
+  background-color: black;
+}
+
 .divTable{
   position: relative;
   width: 100%;
@@ -17,6 +34,15 @@
   text-align: center;
   border-top: 1px solid orangered;
   margin-top: 20px;
+}
+
+.dataTable ,td, th {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+tr{
+  height: 31px;
 }
 
 
