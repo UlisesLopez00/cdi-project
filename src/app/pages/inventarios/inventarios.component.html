@@ -1,1 +1,25 @@
-<p>inventarios works!</p>
+<app-alerttime [data]="alerta"></app-alerttime>
+<div class="buscador">
+    <input type="text" placeholder="Search..."><button>Search</button>
+</div>
+
+<div class="tableStock">
+    <table>
+        <thead>
+            <tr>
+                <th>C.D.B</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td>{{item._id}}</td>
+                <td>{{item.desc}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.stock}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

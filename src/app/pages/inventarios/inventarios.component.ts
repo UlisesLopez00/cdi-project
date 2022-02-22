@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemsService } from '../../services/items.service'
 
 @Component({
   selector: 'app-inventarios',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InventariosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private itemService:ItemsService) { }
+  public alerta: any = {};
+  public items: any = '';
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.showItems();
+  }
+
+  showItems(){
+    this.itemService.itemGet().subscribe({
+      next: (data:any)=>{
+        this.items = data.data;
+      },
+      error: (err: any)=>{
+        this.alerta ={
+          show:true,
+          msg:'Error al buscar',
+          color: 'red'
+        }
+      }
+    })
   }
 
 }
