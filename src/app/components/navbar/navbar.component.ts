@@ -36,9 +36,9 @@ export class NavbarComponent implements OnInit {
       navegation:'users'
     },
     {
-      name:'Productos',
-      iconPath:'../../../assets/icons/products.svg',
-      navegation:'productos'
+      name:'Inventario',
+      iconPath:'../../../assets/icons/inventario.svg',
+      navegation:'stock'
     },
   ];
 
