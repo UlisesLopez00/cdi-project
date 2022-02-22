@@ -14,6 +14,7 @@ export class UsersComponent implements OnInit {
   public alerta: any = {};
   public users: any = [];
   public editar: boolean = false;
+  public id:any = '';
 
   constructor(private userService: UsersService) {}
 
@@ -101,15 +102,35 @@ export class UsersComponent implements OnInit {
     this.editar = true;
     this.name = user.user;
     this.email = user.email;
+    this.id = user._id
     console.log(user.pwd);
-    
+    console.log(user._id);
   }
+
   actualizarUser() {
 
     let data = {
       user:this.name,
       email:this.email,
-      pwd:this.pwd
     };
+
+    this.userService.userPut(data,this.id).subscribe({
+      next:(data:any)=>{
+        this.alerta = {
+          show: true,
+          msg: 'Usuario actualizado con éxito',
+          color: 'green',
+        };
+        this.showUsers();
+        this.editar = false;
+      },
+      error:(err:any)=>{
+        this.alerta = {
+          show: true,
+          msg: 'Error al actualizar',
+          color: 'red'
+        }
+      }
+    })
   }
 }
