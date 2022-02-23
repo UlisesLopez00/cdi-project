@@ -1,4 +1,5 @@
 <app-alerttime [data]="alerta"></app-alerttime>
+<div>
 <div class="buscador">
     <input type="text" placeholder="Search..."><button>Search</button>
 </div>
@@ -11,6 +12,7 @@
                 <th>Descripción</th>
                 <th>Precio</th>
                 <th>Stock</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -19,7 +21,44 @@
                 <td>{{item.desc}}</td>
                 <td>{{item.price}}</td>
                 <td>{{item.stock}}</td>
+                <td>
+                    <button class="btnTable actualizar" (click)="editar(item)"><img src="../../../assets/icons/edit.svg" alt=""></button>
+                    <button class="btnTable eliminar" (click)="deleteItem(item._id)"><img src="../../../assets/icons/delete.svg" alt=""></button>
+                </td>
             </tr>
         </tbody>
     </table>
+</div>
+
+</div>
+
+<div class="difuminado" *ngIf="showModalEdit">
+    <div id="editarItems" class="editar">
+        <div class="formEditData">
+            <div class="floating-form">
+
+                <div class="floating-label">
+                  <input class="floating-input" type="text" placeholder=" " [(ngModel)]="itemEdit.desc" />
+                  <span class="highlight"></span>
+                  <label>Descripción</label>
+                </div>
+
+                <div class="floating-label split" style="margin-right: 4%">
+                    <input class="floating-input" type="number" placeholder=" " [(ngModel)]="itemEdit.stock"/>
+                    <span class="highlight"></span>
+                    <label>Stock</label>
+                  </div>
+
+                <div class="floating-label split" style="margin-right: 4%">
+                  <input class="floating-input" type="number" placeholder=" " [(ngModel)]="itemEdit.price"/>
+                  <span class="highlight"></span>
+                  <label>Precio</label>
+                </div>
+            
+                <button class="btnAgregar cancel split" (click)="cancel()">Cancelar</button>
+                <button class="btnAgregar save split" (click)="save(itemEdit._id)">Guardar</button>
+              </div>
+        </div>
+        
+    </div>    
 </div>

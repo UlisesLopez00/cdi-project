@@ -15,10 +15,10 @@ public url = 'http://localhost:3000';
     return this.http.get(`${this.url}/items`);
   }
   public itemPut(data: any,id:any){
-    return this.http.get(`${this.url}/items/${id}`,data);
+    return this.http.put(`${this.url}/items/${id}`,data);
   }
-  public itemDelete(data:any,id:any){
-    return this.http.get(`${this.url}/items/${id}`,data);
+  public itemDelete(id:any){
+    return this.http.delete(`${this.url}/items/${id}`);
   }
 
 }
