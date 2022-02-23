@@ -27,7 +27,8 @@ export class InventariosComponent implements OnInit {
         this.alerta ={
           show:true,
           msg:'Error al buscar',
-          color: 'red'
+          color: 'red',
+          icon:'error'
         }
       }
     })
@@ -55,7 +56,8 @@ export class InventariosComponent implements OnInit {
         this.alerta ={
           show:true,
           msg:'Actualizado con exito',
-          color: 'green'
+          color: 'green',
+          icon:'success'
         }
         this.showItems();
         this.showModalEdit = false;
@@ -63,7 +65,8 @@ export class InventariosComponent implements OnInit {
         this.alerta ={
           show:true,
           msg:'Error al actualizar',
-          color: 'red'
+          color: 'red',
+          icon:'error'
         }
       }
     })
@@ -77,14 +80,16 @@ export class InventariosComponent implements OnInit {
           this.alerta ={
             show:true,
             msg: '¡Eliminado con exito!',
-            color: 'green'
+            color: 'green',
+            icon:'success'
           }
           this.showItems();
         },error:(err:any)=>{
           this.alerta ={
             show:true,
             msg: 'Error al eliminar',
-            color: 'red'
+            color: 'red',
+            icon:'error'
           }
         }
       })

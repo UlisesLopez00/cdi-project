@@ -8,6 +8,7 @@
         type="text"
         placeholder=" "
         [(ngModel)]="cdb"
+        id="cdb"
         (keyup.enter)="focus('description')"
       />
       <span class="highlight"></span>
@@ -55,7 +56,10 @@
           </ng-template>
       </ngx-file-drop>
       <div class="upload-table" id="upload-preview">
-      
+        <div *ngFor="let item of imagenes;let indexOfelement=index;" class="imagePreview" >
+          <button (click)="deleteImage(indexOfelement)">x</button>
+          <img src="{{item}}" alt="">
+        </div>
       </div>
   </div>
 
@@ -63,3 +67,5 @@
     <button (click)="registrar()" class="btnAgregar">Agregar Producto</button>
   </div>
 </div>
+
+

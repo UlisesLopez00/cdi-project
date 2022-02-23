@@ -33,7 +33,8 @@ export class LoginComponent implements OnInit {
         this.alerta = {
           show:true,
           msg:'Bienvenido',
-          color:'green'
+          color:'green',
+          icon:'success'
         }
         localStorage.setItem('token',data.token);
         this.envService.navbar = true;
@@ -44,7 +45,8 @@ export class LoginComponent implements OnInit {
         this.alerta = {
           show:true,
           msg:'Usuario y/o contraseña incorrecta',
-          color:'red'
+          color:'red',
+          icon:'error'
         }
         console.log(err)
       } 

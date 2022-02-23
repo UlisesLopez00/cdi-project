@@ -53,6 +53,7 @@ export class UsersComponent implements OnInit {
             show: true,
             msg: 'Usuario Registrado con éxito',
             color: 'green',
+            icon:'success'
           };
           this.showUsers();
         },
@@ -61,6 +62,7 @@ export class UsersComponent implements OnInit {
             show: true,
             msg: 'Error',
             color: 'red',
+            icon:'error'
           };
           console.log(err);
         },
@@ -84,6 +86,7 @@ export class UsersComponent implements OnInit {
             show: true,
             msg: 'Usuario eliminado con éxito',
             color: 'green',
+            icon:'success'
           };
           this.showUsers();
         },
@@ -91,7 +94,8 @@ export class UsersComponent implements OnInit {
           this.alerta = {
             show: true,
             msg: 'Error al eliminar',
-            color: 'green',
+            color: 'red',
+            icon:'error'
           };
           console.log(err);
         },
@@ -120,15 +124,19 @@ export class UsersComponent implements OnInit {
           show: true,
           msg: 'Usuario actualizado con éxito',
           color: 'green',
+          icon:'success'
         };
         this.showUsers();
+        this.email = '';
+        this.name = '';
         this.editar = false;
       },
       error:(err:any)=>{
         this.alerta = {
           show: true,
           msg: 'Error al actualizar',
-          color: 'red'
+          color: 'red',
+          icon:'error'
         }
       }
     })

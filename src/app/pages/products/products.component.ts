@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import {
   NgxFileDropEntry,
   FileSystemFileEntry,
@@ -19,13 +19,20 @@ export class ProductsComponent implements OnInit {
   public cantidad?: number;
   public files: NgxFileDropEntry[] = [];
   public imagenes: any = [];
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.focus('cdb');
+  }
 
   public focus(id: any) {
     document.getElementById(id)?.focus();
   }
-
+  public limpiarInputs() {
+    this.cdb = '';
+    this.descripcion = '';
+    this.precio = 0 ;
+    this.cantidad = 0;
+    this.imagenes = [];
+  }
   public registrar() {
     let data = {
       _id: this.cdb,
@@ -41,6 +48,7 @@ export class ProductsComponent implements OnInit {
         show: true,
         msg: 'Todos los campos son obligatorios',
         color: 'orange',
+        icon: 'warning',
       };
     } else {
       this.itemService.itemPost(data).subscribe({
@@ -49,12 +57,14 @@ export class ProductsComponent implements OnInit {
             show: true,
             msg: 'Producto registrado con exito',
             color: 'green',
+            icon: 'success',
           };
+          this.limpiarInputs()
+          this.focus('cdb');
         },
-        error:(err:any)=>{
+        error: (err: any) => {
           console.log(err);
-          
-        }
+        },
       });
     }
   }
@@ -78,17 +88,13 @@ export class ProductsComponent implements OnInit {
           if (this.imagenes.length < 4) {
             let img = document.createElement('img');
             let base64: any = await this.toBase64(file);
-            img.setAttribute('src', base64.toString());
-            img.setAttribute('style', 'width:25%;height:200px');
-            img.setAttribute('id', 'imagePreview');
-            let divPreview = document.getElementById('upload-preview');
-            divPreview?.appendChild(img);
             this.imagenes.push(base64);
           } else {
             this.alerta = {
               show: true,
               msg: 'Solo se pueden subir maximo 4 imagenes',
               color: 'orange',
+              icon: 'warning',
             };
           }
         });
@@ -97,6 +103,7 @@ export class ProductsComponent implements OnInit {
           show: true,
           msg: 'Solo se pueden subir imagenes png,jpg,jpeg',
           color: 'orange',
+          icon: 'warning',
         };
       }
     }
@@ -116,4 +123,9 @@ export class ProductsComponent implements OnInit {
       reader.onload = () => resolve(reader.result);
       reader.onerror = (error) => reject(error);
     });
+
+  public deleteImage(index:number){
+    this.imagenes.splice(index, 1);
+    
+  }
 }
