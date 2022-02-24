@@ -18,6 +18,7 @@ import { NgxFileDropModule } from 'ngx-file-drop';
 import { NgChartsModule } from 'ng2-charts';
 import { UsersComponent } from './pages/users/users.component';
 import { InventariosComponent } from './pages/inventarios/inventarios.component';
+import { SalidasComponent } from "./pages/salidas/salidas.component";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { InventariosComponent } from './pages/inventarios/inventarios.component'
     ProductsComponent,
     UsersComponent,
     DndDirective,
-    InventariosComponent
+    InventariosComponent,
+    SalidasComponent
   ],
   imports: [
     BrowserModule,

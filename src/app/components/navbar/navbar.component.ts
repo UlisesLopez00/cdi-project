@@ -40,6 +40,11 @@ export class NavbarComponent implements OnInit {
       iconPath:'../../../assets/icons/inventario.svg',
       navegation:'stock'
     },
+    {
+      name:'Salidas',
+      iconPath:'../../../assets/icons/inventario.svg',
+      navegation:'out'
+    },
   ];
 
   closeSesion(){

@@ -5,6 +5,7 @@ import { InventariosComponent } from './pages/inventarios/inventarios.component'
 import { LoginComponent } from './pages/login/login.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { UsersComponent } from './pages/users/users.component'
+import { SalidasComponent } from './pages/salidas/salidas.component'
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'login', component:LoginComponent},
   {path: 'users', component:UsersComponent},
   {path: 'products', component:ProductsComponent},
-  {path: 'stock', component:InventariosComponent}
+  {path: 'stock', component:InventariosComponent},
+  {path: 'out', component: SalidasComponent}
 
 ];
 
