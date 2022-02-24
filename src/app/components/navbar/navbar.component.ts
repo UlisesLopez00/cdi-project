@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit {
     },
     {
       name:'Salidas',
-      iconPath:'../../../assets/icons/inventario.svg',
+      iconPath:'../../../assets/icons/ventas.svg',
       navegation:'out'
     },
   ];

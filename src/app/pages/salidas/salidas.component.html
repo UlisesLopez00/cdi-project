@@ -1,4 +1,101 @@
 <app-alerttime [data]="alerta"></app-alerttime>
-<div>
-  
+<div class="divLeft">
+  <div class="divForm">
+    <div class="floating-form">
+      <div class="floating-label">
+        <input class="floating-input" type="text" placeholder=" " />
+        <span class="highlight"></span>
+        <label>Codigo de barras</label>
+      </div>
+      <div class="floating-label">
+        <input
+          class="floating-input"
+          type="text"
+          placeholder=" "
+          disabled="true"
+        />
+        <span class="highlight"></span>
+        <label>Descripcion</label>
+      </div>
+      <div class="floating-label split" style="margin-right: 8%">
+        <input
+          class="floating-input"
+          type="text"
+          placeholder=" "
+          disabled="true"
+        />
+        <span class="highlight"></span>
+        <label>Costo</label>
+      </div>
+      <div class="floating-label split">
+        <input
+          class="floating-input"
+          type="number"
+          placeholder=" "
+          [defaultValue]="1"
+          min="1"
+        />
+        <span class="highlight"></span>
+        <label>Cantidad</label>
+      </div>
+      <button class="btnAgregar">Agregar</button>
+    </div>
+  </div>
+  <div class="buscador">
+    <input type="text" placeholder="Buscar Producto..." />
+  </div>
+  <div class="divTable">
+    <table>
+      <thead>
+        <tr>
+          <th>Descripcion</th>
+          <th>Precio</th>
+          <th>Stock</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+<div class="divRight">
+  <div class="divTable">
+    <table>
+      <thead>
+        <tr style="position: sticky; top: 0px; background-color: rgb(255, 255, 255);">
+          <th>Descripcion</th>
+          <th>Cantidad</th>
+          <th>Precio Uni</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Coca-cola 600ml</td>
+          <td>10</td>
+          <td>$12.00</td>
+          <td>$120.00</td>
+        </tr>
+       
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divBtnGenerar">
+    <button>Generara Salida</button>
+  </div>
+  <div class="divTotal">
+    <table>
+      <tr>
+        <td>Subtotal</td>
+        <td>$ 600.00</td>
+      </tr>
+      <tr>
+        <td>Descuento</td>
+        <td>$ 50.00</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td>$ 700.00</td>
+      </tr>
+    </table>
+  </div>
 </div>

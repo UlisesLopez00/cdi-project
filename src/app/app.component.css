@@ -1,7 +1,8 @@
 .body{
     position: relative;
     width: 80%;
-    top: 70px;
+    height: 90vh;
+    top: 10vh;
     left: 20%;
     overflow-y: auto;
 }
