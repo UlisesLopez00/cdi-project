@@ -14,7 +14,12 @@ export class SalidasComponent implements OnInit {
   public product:any = '';
   public cantidad:any = '';
   public fecha:any = '';
-
+  public selectedItems:any = [{}];
+  public cdb:any = '';
+  public description:any = '';
+  public costo:any = '';
+  public amount:any = '';
+  
   constructor(
     private outService: SalidasService,
     private itemService: ItemsService
@@ -23,12 +28,17 @@ export class SalidasComponent implements OnInit {
   ngOnInit() {
     this.showItems();
     this.showOuts();
+    console.log(this.selectedItems);
+    if (this.selectedItems.length == 1) {
+      this.selectedItems.splice(0,1);
+    } 
   }
 
   showItems(){
     this.itemService.itemGet().subscribe({
       next: (data:any)=>{
         this.items = data.data;
+        console.log(this.items);
       },error:(err:any)=>{
         this.alerta = {
           show: true,
@@ -69,6 +79,7 @@ export class SalidasComponent implements OnInit {
           color:'green',
           icon:'success'
         }
+        this.showOuts();
       },error:(err:any)=>{
         this.alerta ={
           show:true,
@@ -89,6 +100,7 @@ export class SalidasComponent implements OnInit {
           color:'green',
           icon:'success'
         }
+        this.showOuts();
       },error:(err:any)=>{
         this.alerta ={
           show:true,
@@ -102,6 +114,36 @@ export class SalidasComponent implements OnInit {
 
   updateOut(id:any,data:any){
     
+  }
+
+  addItem(producto:any){
+    this.cdb = producto._id;
+    this.costo = producto.price;
+    this.description = producto.desc 
+  }
+
+  saveItem(){
+    
+    if (!this.amount) {
+      this.alerta ={
+        show:true,
+        msg:'Cantidad no puede estar vacio',
+        color:'red',
+        icon:'warning'
+      }
+    }else{
+    let data = {
+      descripcion:this.description,
+      cantidad: this.amount,
+      precio: this.costo
+    }
+    this.selectedItems.push(data);
+    console.log(this.selectedItems);
+    }
+  }
+
+  deleteItem(i:any):void{
+      this.selectedItems.splice(i,1);
   }
 
 }

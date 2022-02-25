@@ -3,7 +3,7 @@
   <div class="divForm">
     <div class="floating-form">
       <div class="floating-label">
-        <input class="floating-input" type="text" placeholder=" " [(ngModel)]="cdb" />
+        <input class="floating-input" type="text" placeholder=" " />
         <span class="highlight"></span>
         <label>Codigo de barras</label>
       </div>
@@ -13,7 +13,7 @@
           type="text"
           placeholder=" "
           disabled="true"
-          [(ngModel)]="description"
+          
         />
         <span class="highlight"></span>
         <label>Descripcion</label>
@@ -24,7 +24,7 @@
           type="text"
           placeholder=" "
           disabled="true"
-          [(ngModel)]="costo"
+         
         />
         <span class="highlight"></span>
         <label>Costo</label>
@@ -36,12 +36,12 @@
           placeholder=" "
           [defaultValue]="1"
           min="1"
-          [(ngModel)]="amount"
+          
         />
         <span class="highlight"></span>
         <label>Cantidad</label>
       </div>
-      <button (click)="saveItem()" class="btnAgregar">Agregar</button>
+      <button  class="btnAgregar">Agregar</button>
     </div>
   </div>
   <div class="buscador">
@@ -62,7 +62,7 @@
           <td>{{item.desc}}</td>
           <td>{{item.price}}</td>
           <td>{{item.stock}}</td>
-          <td><button (click)="addItem(item)">+</button></td>
+          <td><button >+</button></td>
         </tr>
       </tbody>
     </table>
@@ -82,7 +82,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of selectedItems; let i = index">
-          <td><button (click)="deleteItem(i)">-</button></td>
+          <td><button >-</button></td>
           <td>{{item.descripcion}}</td>
           <td>{{item.cantidad}}</td>
           <td>{{item.precio}}</td>
