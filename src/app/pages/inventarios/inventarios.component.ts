@@ -99,13 +99,10 @@ export class InventariosComponent implements OnInit {
     }
   }
 
-  searchById(){
-    this.itemService.itemGetId(this.itemSearch).subscribe({
-      next:(data:any)=>{
-        this.itemFound = data;
-        console.log(this.itemFound);
-        console.log(this.itemFound.data.desc);
-        this.encontrarItem = true;
+  searchById(data:any){
+    this.itemService.itemGetId(data).subscribe({
+      next:(data:any)=>{        
+        this.items = data.data;
       },error:(err:any)=>{
         this.alerta = {
           show:true,
@@ -117,4 +114,9 @@ export class InventariosComponent implements OnInit {
     })
   }
 
+
+  public buscador($event:any){
+    this.searchById($event)
+    
+  }
 }

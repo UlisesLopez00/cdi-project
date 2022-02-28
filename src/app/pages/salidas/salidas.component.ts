@@ -18,6 +18,8 @@ export class SalidasComponent implements OnInit {
   public cdb:any = '';
   public description:any = '';
   public costo:any = '';
+  public itemSearch:any = '';
+
   public amount:any = '';
   
   constructor(
@@ -128,7 +130,7 @@ export class SalidasComponent implements OnInit {
       this.alerta ={
         show:true,
         msg:'Cantidad no puede estar vacio',
-        color:'red',
+        color:'orange',
         icon:'warning'
       }
     }else{
@@ -144,6 +146,30 @@ export class SalidasComponent implements OnInit {
 
   deleteItem(i:any):void{
       this.selectedItems.splice(i,1);
+  }
+
+
+
+  searchById(data:any){
+    this.itemService.itemGetId(data).subscribe({
+      next:(data:any)=>{        
+        this.items = data.data;
+        
+      },error:(err:any)=>{
+        this.alerta = {
+          show:true,
+          msg:'No se encontró el producto',
+          color:'red',
+          icon: 'error'
+        }
+      }
+    })
+  }
+
+  public buscador($event:any){
+    
+    this.searchById($event)
+    
   }
 
 }

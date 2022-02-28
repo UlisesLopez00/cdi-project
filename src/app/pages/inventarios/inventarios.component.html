@@ -1,7 +1,7 @@
 <app-alerttime [data]="alerta"></app-alerttime>
 <div>
 <div class="buscador">
-    <input type="text" placeholder="Search..." [(ngModel)]="itemSearch" ><button (click)="searchById()">Search</button>
+    <input type="text" placeholder="Search..." [(ngModel)]="itemSearch" (ngModelChange)="buscador($event)" ><button >Search</button>
 </div>
 
 <div class="tableStock">
@@ -31,7 +31,7 @@
 </div>
 </div>
 <br><br>
-<div *ngIf="encontrarItem" id="founded">
+<!-- <div *ngIf="encontrarItem" id="founded">
     <h1>Producto Encontrado</h1>
     <table>
         <thead>
@@ -80,4 +80,4 @@
         </div>
         
     </div>    
-</div>
+</div> -->

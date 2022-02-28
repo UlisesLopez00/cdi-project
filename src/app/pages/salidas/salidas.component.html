@@ -45,7 +45,7 @@
     </div>
   </div>
   <div class="buscador">
-    <input type="text" placeholder="Buscar Producto..." />
+    <input type="text" [(ngModel)]="itemSearch" (ngModelChange)="buscador($event)" placeholder="Buscar Producto..." />
   </div>
   <div class="divTable">
     <table>
