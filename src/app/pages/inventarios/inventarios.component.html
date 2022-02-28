@@ -1,7 +1,7 @@
 <app-alerttime [data]="alerta"></app-alerttime>
 <div>
 <div class="buscador">
-    <input type="text" placeholder="Search..."><button>Search</button>
+    <input type="text" placeholder="Search..." [(ngModel)]="itemSearch" ><button (click)="searchById()">Search</button>
 </div>
 
 <div class="tableStock">
@@ -29,7 +29,26 @@
         </tbody>
     </table>
 </div>
-
+</div>
+<br><br>
+<div *ngIf="encontrarItem" id="founded">
+    <h1>Producto Encontrado</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Disponibles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{itemFound.data.desc}}</td>
+                <td>{{itemFound.data.price}}</td>
+                <td>{{itemFound.data.stock}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <div class="difuminado" *ngIf="showModalEdit">

@@ -13,6 +13,9 @@ export class InventariosComponent implements OnInit {
   public items: any = '';
   public itemEdit: any = {};
   public showModalEdit:any = false;
+  public itemSearch:any = '';
+  public itemFound:any = '';
+  public encontrarItem:any = false;
 
   ngOnInit() {
     this.showItems();
@@ -94,6 +97,24 @@ export class InventariosComponent implements OnInit {
         }
       })
     }
+  }
+
+  searchById(){
+    this.itemService.itemGetId(this.itemSearch).subscribe({
+      next:(data:any)=>{
+        this.itemFound = data;
+        console.log(this.itemFound);
+        console.log(this.itemFound.data.desc);
+        this.encontrarItem = true;
+      },error:(err:any)=>{
+        this.alerta = {
+          show:true,
+          msg:'No se encontró el producto',
+          color:'red',
+          icon: 'error'
+        }
+      }
+    })
   }
 
 }
