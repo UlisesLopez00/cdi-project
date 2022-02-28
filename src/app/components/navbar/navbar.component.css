@@ -15,7 +15,8 @@
 .headerMovil {
   position: fixed;
   display: none;
-}
+} 
+
 .headerWeb {
   position: fixed;
   width: 80%;
