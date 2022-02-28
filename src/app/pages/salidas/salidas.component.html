@@ -93,21 +93,21 @@
   </div>
 
   <div class="divBtnGenerar">
-    <button>Generara Salida</button>
+    <button (click)="updateStock()">Generara Salida</button>
   </div>
   <div class="divTotal">
     <table>
       <tr>
         <td>Subtotal</td>
-        <td>$ 600.00</td>
+        <td>$ {{subTotal}}</td>
       </tr>
       <tr>
         <td>Descuento</td>
-        <td>$ 50.00</td>
+        <td>$ {{descuento}}</td>
       </tr>
       <tr>
         <td>Total</td>
-        <td>$ 700.00</td>
+        <td>$ {{total}}</td>
       </tr>
     </table>
   </div>

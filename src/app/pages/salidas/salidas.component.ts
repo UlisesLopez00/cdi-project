@@ -19,8 +19,12 @@ export class SalidasComponent implements OnInit {
   public description:any = '';
   public costo:any = '';
   public itemSearch:any = '';
-
   public amount:any = '';
+  public total:number = 0;
+  public subTotal:number = 0;
+  public descuento:number = 0;
+  public stock:any = '';
+  public idToUpdateStock:any = '';
   
   constructor(
     private outService: SalidasService,
@@ -30,7 +34,7 @@ export class SalidasComponent implements OnInit {
   ngOnInit() {
     this.showItems();
     this.showOuts();
-    console.log(this.selectedItems);
+    
     if (this.selectedItems.length == 1) {
       this.selectedItems.splice(0,1);
     } 
@@ -40,7 +44,7 @@ export class SalidasComponent implements OnInit {
     this.itemService.itemGet().subscribe({
       next: (data:any)=>{
         this.items = data.data;
-        console.log(this.items);
+        
       },error:(err:any)=>{
         this.alerta = {
           show: true,
@@ -121,7 +125,8 @@ export class SalidasComponent implements OnInit {
   addItem(producto:any){
     this.cdb = producto._id;
     this.costo = producto.price;
-    this.description = producto.desc 
+    this.description = producto.desc,
+    this.stock = producto.stock
   }
 
   saveItem(){
@@ -137,15 +142,19 @@ export class SalidasComponent implements OnInit {
     let data = {
       descripcion:this.description,
       cantidad: this.amount,
-      precio: this.costo
+      precio: this.costo,
+      stock: this.stock,
+      id:this.cdb
     }
     this.selectedItems.push(data);
-    console.log(this.selectedItems);
+    this.calcularTotal();
+   
     }
   }
 
   deleteItem(i:any):void{
       this.selectedItems.splice(i,1);
+      this.calcularTotal();
   }
 
 
@@ -154,7 +163,6 @@ export class SalidasComponent implements OnInit {
     this.itemService.itemGetId(data).subscribe({
       next:(data:any)=>{        
         this.items = data.data;
-        
       },error:(err:any)=>{
         this.alerta = {
           show:true,
@@ -167,9 +175,45 @@ export class SalidasComponent implements OnInit {
   }
 
   public buscador($event:any){
-    
-    this.searchById($event)
-    
+    this.searchById($event);
+  }
+
+  calcularTotal(){
+    this.subTotal = 0;
+    this.selectedItems.forEach((i:any) => {
+      this.subTotal = this.subTotal + (i.precio * i.cantidad);
+    });
+    this.total = this.subTotal - this.descuento;
+  }
+
+  updateStock(){
+    console.log(this.selectedItems);
+    for (let i = 0; i < this.selectedItems.length; i++) {
+      let currentStock = this.selectedItems[i].stock;
+      let newStock = currentStock - this.selectedItems[i].cantidad;
+      let data={
+        stock:newStock
+      }
+      this.itemService.itemPut(data,this.selectedItems[i].id).subscribe({
+        next:(data:any)=>{
+          this.alerta = {
+            show:true,
+            msg: 'Registrado con exito',
+            color:'green',
+            icon:'success'
+          }
+          this.selectedItems = []
+          this.showItems();
+        },error:(err:any )=>{
+          this.alerta = {
+            show:true,
+            msg: 'Registrado con exito',
+            color:'error',
+            icon:'red'
+          }
+        } 
+      });
+    }
   }
 
 }
