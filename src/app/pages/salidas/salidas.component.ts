@@ -118,10 +118,6 @@ export class SalidasComponent implements OnInit {
     })
   }
 
-  updateOut(id:any,data:any){
-    
-  }
-
   addItem(producto:any){
     this.cdb = producto._id;
     this.costo = producto.price;

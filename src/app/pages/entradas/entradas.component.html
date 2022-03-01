@@ -2,33 +2,35 @@
 <div class="divLeft">
   <div class="divForm">
     <div class="floating-form">
+
       <div class="floating-label">
-        <input class="floating-input" type="text" placeholder=" " />
+        <input class="floating-input" type="text" placeholder=" " [(ngModel)]="id" />
         <span class="highlight"></span>
         <label>Codigo de barras</label>
       </div>
+
       <div class="floating-label">
         <input
           class="floating-input"
           type="text"
           placeholder=" "
-          disabled="true"
-          
+          [(ngModel)]="desc"
         />
         <span class="highlight"></span>
         <label>Descripcion</label>
       </div>
+
       <div class="floating-label split" style="margin-right: 8%">
         <input
           class="floating-input"
-          type="text"
+          type="number"
           placeholder=" "
-          disabled="true"
-         
+          [(ngModel)]="costo"
         />
         <span class="highlight"></span>
         <label>Costo</label>
       </div>
+
       <div class="floating-label split">
         <input
           class="floating-input"
@@ -36,12 +38,13 @@
           placeholder=" "
           [defaultValue]="1"
           min="1"
-          
+          [(ngModel)]="cantidad"
         />
         <span class="highlight"></span>
         <label>Cantidad</label>
       </div>
-      <button  class="btnAgregar">Agregar</button>
+
+      <button  class="btnAgregar" (click)="addItem()">Agregar</button>
     </div>
   </div>
 
@@ -53,17 +56,16 @@
         <tr style="position: sticky; top: 0px; background-color: rgb(255, 255, 255);">
           <th></th>
           <th>Descripcion</th>
-          <th>Cantidad</th>
-          <th>Precio Uni</th>
-          <th>Total</th>
+          <th>Precio</th>
+          <th>cantidad</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of selectedItems; let i = index">
-          <td><button >-</button></td>
-          <td>{{item.descripcion}}</td>
-          <td>{{item.cantidad}}</td>
+          <td><button (click)="deleteItem(i)">-</button></td>
+          <td>{{item.producto}}</td>
           <td>{{item.precio}}</td>
+          <td>{{item.cantidad}}</td>
         </tr>
        
       </tbody>
@@ -71,21 +73,21 @@
   </div>
 
   <div class="divBtnGenerar">
-    <button>Generara Salida</button>
+    <button (click)="checkItemExist()">Generara Entrada</button>
   </div>
   <div class="divTotal">
     <table>
       <tr>
         <td>Subtotal</td>
-        <td>$ 600.00</td>
+        <td>$ {{subTotal}}</td>
       </tr>
       <tr>
         <td>Descuento</td>
-        <td>$ 50.00</td>
+        <td>$ {{descuento}}</td>
       </tr>
       <tr>
         <td>Total</td>
-        <td>$ 700.00</td>
+        <td>$ {{total}}</td>
       </tr>
     </table>
   </div>

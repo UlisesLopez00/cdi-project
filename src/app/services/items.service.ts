@@ -23,5 +23,7 @@ public url = 'http://localhost:3000';
   public itemDelete(id:any){
     return this.http.delete(`${this.url}/items/${id}`);
   }
-
+  public oneItemId(id:any){
+    return this.http.get(`${this.url}/item/${id}`)
+  }
 }
