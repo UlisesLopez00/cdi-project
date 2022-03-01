@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         }
         localStorage.setItem('token',data.token);
         this.envService.navbar = true;
-        this.router.navigate(['home']);
+        window.location.href = 'http://localhost:4200/home'
         
       },
       error: (err: any)=>{
