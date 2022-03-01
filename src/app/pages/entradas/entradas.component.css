@@ -236,4 +236,42 @@
       background: transparent;
     }
   }
+
+  
+@media only screen and (max-width: 600px) {
+  .divLeft{
+    width: 100%;
+    border-bottom: 1px solid lightblue;
+  }
+  .divRight{
+    position: relative;
+    width: 100%;
+  }
+  .divRight .divBtnGenerar {
+    width: 100%;
+  }
+  .divRight .divBtnGenerar button {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(0, 110, 253);
+    color: white;
+    font-size: 20px;
+  }
+  .divRight .divTotal {
+    position: relative;
+    width: 100%;
+    border: 1px solid rgb(0, 110, 253);
+    border-radius: 10px;
+
+  }
+  .divRight .divTotal table {
+    position: relative;
+    width: 100%;
+    text-align: left;
+  }
+}
+
   
