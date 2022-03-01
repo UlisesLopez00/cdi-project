@@ -187,32 +187,74 @@ export class SalidasComponent implements OnInit {
   }
 
   updateStock(){
-    console.log(this.selectedItems);
+    let dataOut = {
+      item: this.description,
+      cantidad: this.amount,
+      total: this.total,
+    }
     for (let i = 0; i < this.selectedItems.length; i++) {
       let currentStock = this.selectedItems[i].stock;
       let newStock = currentStock - this.selectedItems[i].cantidad;
       let data={
         stock:newStock
       }
-      this.itemService.itemPut(data,this.selectedItems[i].id).subscribe({
-        next:(data:any)=>{
+      if (this.amount>currentStock) {
+        this.alerta = {
+          show:true,
+          msg: 'No puede ser mayor a stock',
+          color:'orange',
+          icon:'warning'
+        }
+        this.selectedItems = []
+        if (currentStock<=0) {
           this.alerta = {
             show:true,
-            msg: 'Registrado con exito',
-            color:'green',
-            icon:'success'
+            msg: 'No queda stock',
+            color:'orange',
+            icon:'warning'
           }
           this.selectedItems = []
-          this.showItems();
-        },error:(err:any )=>{
-          this.alerta = {
-            show:true,
-            msg: 'Registrado con exito',
-            color:'error',
-            icon:'red'
-          }
-        } 
-      });
+        }
+        else{
+          this.itemService.itemPut(data,this.selectedItems[i].id).subscribe({
+            next:(data:any)=>{
+              this.alerta = {
+                show:true,
+                msg: 'Registrado con exito',
+                color:'green',
+                icon:'success'
+              }
+              this.selectedItems = []
+              this.showItems();
+              console.log(dataOut)
+              this.outService.outPost(dataOut).subscribe({
+                next: (data:any)=>{
+                  this.alerta = {
+                    show:true,
+                    msg: 'Correcto',
+                    color:'green',
+                    icon:'success'
+                  }
+                },error:(err:any)=>{
+                  this.alerta = {
+                    show:true,
+                    msg: 'Error',
+                    color:'red',
+                    icon:'error'
+                  }
+                }
+              })
+            },error:(err:any )=>{
+              this.alerta = {
+                show:true,
+                msg: 'Registrado con exito',
+                color:'error',
+                icon:'red'
+              }
+            } 
+          });
+      }
+      }
     }
   }
 

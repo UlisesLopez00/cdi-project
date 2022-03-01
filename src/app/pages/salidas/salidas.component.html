@@ -48,7 +48,7 @@
     <input type="text" [(ngModel)]="itemSearch" (ngModelChange)="buscador($event)" placeholder="Buscar Producto..." />
   </div>
   <div class="divTable">
-    <table>
+    <table class="selectItems">
       <thead>
         <tr>
           <th>Descripcion</th>
@@ -62,7 +62,7 @@
           <td>{{item.desc}}</td>
           <td>{{item.price}}</td>
           <td>{{item.stock}}</td>
-          <td><button (click)="addItem(item)">+</button></td>
+          <td><button class="btnAddItem" (click)="addItem(item)">+</button></td>
         </tr>
       </tbody>
     </table>
@@ -70,7 +70,7 @@
 </div>
 <div class="divRight">
   <div class="divTable">
-    <table>
+    <table class="selectItems">
       <thead>
         <tr style="position: sticky; top: 0px; background-color: rgb(255, 255, 255);">
           <th></th>

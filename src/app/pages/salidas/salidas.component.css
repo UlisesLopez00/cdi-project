@@ -6,6 +6,20 @@
 button {
   cursor: pointer;
 }
+
+.selectItems {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.btnAddItem {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(0, 110, 253);
+  border: none;
+  color: white;
+  border-radius: 10px;
+}
 .divLeft .buscador input {
   position: relative;
   width: 80%;
