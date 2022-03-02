@@ -1,3 +1,45 @@
+.modalImages{
+  position: fixed;
+  width: 60%;
+  height: 60%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-35%,-50%);
+  background-color: rgb(185, 185, 185);
+  z-index: 9;
+  border-radius: 10px;
+}
+.modalImages p{
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+  z-index: 9;
+}
+.modalImages img{
+  position: relative;
+  width: 80%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+}
+.modalImages .allImages{
+  position: absolute;
+  height: 100%;
+  width: 20%;
+  background-color: black;
+  top: 0px;
+  right: 0%;
+}
+.modalImages .allImages img{
+  position: relative;
+  width: 100%;
+  height: 25%;
+  object-fit: fill;
+  cursor: pointer;
+}
 .buscador {
     position: relative;
     margin-top: 55px;

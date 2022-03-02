@@ -1,64 +1,109 @@
 <app-alerttime [data]="alerta"></app-alerttime>
 <div>
-<div class="buscador">
-    <input type="text" placeholder="Search..." [(ngModel)]="itemSearch" (ngModelChange)="buscador($event)" ><button >Search</button>
-</div>
+  <div class="buscador">
+    <input
+      type="text"
+      placeholder="Search..."
+      [(ngModel)]="itemSearch"
+      (ngModelChange)="buscador($event)"
+    /><button>Search</button>
+  </div>
 
-<div class="tableStock">
+  <div class="tableStock">
     <table>
-        <thead>
-            <tr>
-                <th>C.D.B</th>
-                <th>Descripción</th>
-                <th>Precio</th>
-                <th>Stock</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of items">
-                <td>{{item._id}}</td>
-                <td>{{item.desc}}</td>
-                <td>{{item.price}}</td>
-                <td>{{item.stock}}</td>
-                <td>
-                    <button class="btnTable actualizar" (click)="editar(item)"><img src="../../../assets/icons/edit.svg" alt=""></button>
-                    <button class="btnTable eliminar" (click)="deleteItem(item._id)"><img src="../../../assets/icons/delete.svg" alt=""></button>
-                </td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th>C.D.B</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Imagen</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td>{{ item._id }}</td>
+          <td>{{ item.desc }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.stock }}</td>
+          <td>
+            <img
+              (click)="viewImage(item.image)"
+              style="cursor: pointer"
+              src="../../../assets/icons/view.svg"
+              alt=""
+            />
+          </td>
+          <td>
+            <button class="btnTable actualizar" (click)="editar(item)">
+              <img src="../../../assets/icons/edit.svg" alt="" />
+            </button>
+            <button class="btnTable eliminar" (click)="deleteItem(item._id)">
+              <img src="../../../assets/icons/delete.svg" alt="" />
+            </button>
+          </td>
+        </tr>
+      </tbody>
     </table>
+  </div>
 </div>
-</div>
-<br><br>
+<br /><br />
 
 <div class="difuminado" *ngIf="showModalEdit">
-    <div id="editarItems" class="editar">
-        <div class="formEditData">
-            <div class="floating-form">
-
-                <div class="floating-label">
-                  <input class="floating-input" type="text" placeholder=" " [(ngModel)]="itemEdit.desc" />
-                  <span class="highlight"></span>
-                  <label>Descripción</label>
-                </div>
-
-                <div class="floating-label split" style="margin-right: 4%">
-                    <input class="floating-input" type="number" placeholder=" " [(ngModel)]="itemEdit.stock"/>
-                    <span class="highlight"></span>
-                    <label>Stock</label>
-                  </div>
-
-                <div class="floating-label split" style="margin-right: 4%">
-                  <input class="floating-input" type="number" placeholder=" " [(ngModel)]="itemEdit.price"/>
-                  <span class="highlight"></span>
-                  <label>Precio</label>
-                </div>
-            
-                <button class="btnAgregar cancel split" (click)="cancel()">Cancelar</button>
-                <button class="btnAgregar save split" (click)="save(itemEdit._id)">Guardar</button>
-              </div>
+  <div id="editarItems" class="editar">
+    <div class="formEditData">
+      <div class="floating-form">
+        <div class="floating-label">
+          <input
+            class="floating-input"
+            type="text"
+            placeholder=" "
+            [(ngModel)]="itemEdit.desc"
+          />
+          <span class="highlight"></span>
+          <label>Descripción</label>
         </div>
-        
-    </div>    
-</div> 
+
+        <div class="floating-label split" style="margin-right: 4%">
+          <input
+            class="floating-input"
+            type="number"
+            placeholder=" "
+            [(ngModel)]="itemEdit.stock"
+          />
+          <span class="highlight"></span>
+          <label>Stock</label>
+        </div>
+
+        <div class="floating-label split" style="margin-right: 4%">
+          <input
+            class="floating-input"
+            type="number"
+            placeholder=" "
+            [(ngModel)]="itemEdit.price"
+          />
+          <span class="highlight"></span>
+          <label>Precio</label>
+        </div>
+
+        <button class="btnAgregar cancel split" (click)="cancel()">
+          Cancelar
+        </button>
+        <button class="btnAgregar save split" (click)="save(itemEdit._id)">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modalImages" *ngIf="showModalImage">
+    <p (click)="showModalImage = !showModalImage">X</p>
+    <img [src]="'http://localhost:3000/images/Items/'+imagesView[numberBigImage]" alt="">
+    <div class="allImages">
+        <img *ngFor="let item of imagesView;let indexOfelement=index;" (click)="numberBigImage = indexOfelement" [src]="'http://localhost:3000/images/Items/'+item" alt="">
+    </div>
+</div>
